@@ -1,2 +1,0 @@
-[napari.manifest]
-napari-cryofibsem-imgpro = napari_cryofibsem_imgpro:napari.yaml
