@@ -8,6 +8,8 @@ from napari_plugin_engine import napari_hook_implementation
 
 
 def process_slice(slice_data, dec_num, sigma, wname):
+    slice_data_dtype = slice_data.dtype
+
     # Decomposes image into details
     Ch, Cv, Cd = [], [], []
     for ii in range(dec_num):
@@ -38,10 +40,10 @@ def process_slice(slice_data, dec_num, sigma, wname):
 
     # Converts and normalizes range to original 8 or 16 bit unsigned integers
     processed_slice_uint = None
-    if slice_data.dtype == "uint16":
+    if slice_data_dtype == "uint16":
         processed_slice_uint = cv2.normalize(img_ori_float, None, alpha=0, beta=65535, norm_type=cv2.NORM_MINMAX,
                                              dtype=cv2.CV_16U)
-    elif slice_data.dtype == "uint8":
+    elif slice_data_dtype == "uint8":
         processed_slice_uint = cv2.normalize(img_ori_float, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX,
                                              dtype=cv2.CV_8U)
 
