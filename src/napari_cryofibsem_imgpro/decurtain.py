@@ -87,8 +87,6 @@ def decurtain(
         print("Please select an image layer.")
         return
 
-    pad_width_int = int(pad_width)
-
     if len(image.data.shape) > 2:
         stack = image.data
         processed_slices = []
